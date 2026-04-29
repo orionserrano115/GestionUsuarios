@@ -6,7 +6,7 @@
 $host = "mysql-trainee115.alwaysdata.net";
 $user = "trainee115";
 $password = "clase1234";
-$database = "trainee115_gestionusuariosd";
+$database = "trainee115_gestionusuarios";
 
 $conn = new mysqli($host, $user, $password, $database);
 
