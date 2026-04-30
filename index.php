@@ -1,13 +1,11 @@
-<!-- index.php -->
 <?php include('backend.php'); ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Usuarios</title>
     <link rel="stylesheet" href="styles.css">
+    
 </head>
 <body>
 
@@ -20,13 +18,13 @@
         <?php endif; ?>
 
         <input type="text" name="nombre" placeholder="Nombre completo" required
-            value="<?php echo $editar ? $usuarioEditar['nombre'] : ''; ?>">
+            value="<?php echo $editar ? htmlspecialchars($usuarioEditar['nombre']) : ''; ?>">
 
         <input type="text" name="cedula" placeholder="Cédula" required
-            value="<?php echo $editar ? $usuarioEditar['cedula'] : ''; ?>">
+            value="<?php echo $editar ? htmlspecialchars($usuarioEditar['cedula']) : ''; ?>">
 
         <input type="text" name="telefono" placeholder="Teléfono" required
-            value="<?php echo $editar ? $usuarioEditar['telefono'] : ''; ?>">
+            value="<?php echo $editar ? htmlspecialchars($usuarioEditar['telefono']) : ''; ?>">
 
         <?php if ($editar): ?>
             <button type="submit" name="actualizar">Actualizar Usuario</button>
@@ -42,7 +40,7 @@
                 <th>Nombre</th>
                 <th>Cédula</th>
                 <th>Teléfono</th>
-                <th>Fecha de Registro</th>
+                <th>Fecha</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -50,9 +48,9 @@
             <?php while($fila = $usuarios->fetch_assoc()): ?>
                 <tr>
                     <td><?php echo $fila['id']; ?></td>
-                    <td><?php echo $fila['nombre']; ?></td>
-                    <td><?php echo $fila['cedula']; ?></td>
-                    <td><?php echo $fila['telefono']; ?></td>
+                    <td><?php echo htmlspecialchars($fila['nombre']); ?></td>
+                    <td><?php echo htmlspecialchars($fila['cedula']); ?></td>
+                    <td><?php echo htmlspecialchars($fila['telefono']); ?></td>
                     <td><?php echo $fila['created_at']; ?></td>
                     <td>
                         <a class="btn-editar" href="?editar=<?php echo $fila['id']; ?>">Editar</a>
@@ -65,6 +63,5 @@
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>

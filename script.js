@@ -1,10 +1,9 @@
-// script.js
 document.getElementById("formularioUsuario").addEventListener("submit", function(e) {
     let nombre = document.querySelector("input[name='nombre']").value.trim();
     let cedula = document.querySelector("input[name='cedula']").value.trim();
     let telefono = document.querySelector("input[name='telefono']").value.trim();
 
-    if (nombre === "" || cedula === "" || telefono === "") {
+    if (!nombre || !cedula || !telefono) {
         alert("Todos los campos son obligatorios");
         e.preventDefault();
     }
